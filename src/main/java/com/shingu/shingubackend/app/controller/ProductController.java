@@ -33,10 +33,13 @@ public class ProductController {
     return productRepository.findById(id);
   }
 
+  // Spring BootがURLパス /shingu-main/products/掛け布団
+  // に対して複数のハンドラメソッドが一致していることによりどのハンドラメソッド呼び出すべきかを判断できない
   @GetMapping("/products/category/{category}")
   public List<Product> findByCategory(@PathVariable String category) {
     return productRepository.findByCategory(category);
   }
+
   // @GetMapping("/products")
   // public ResponseEntity<List<Product>> findAll(@RequestParam("page") int page,
   // @RequestParam(name = "size", defaultValue = "5") int size) {
