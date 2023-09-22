@@ -9,20 +9,37 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shingu.shingubackend.app.service.ProductService;
 import com.shingu.shingubackend.domain.model.Product;
+import com.shingu.shingubackend.domain.service.ProductRepository;
 
 @RestController
 @CrossOrigin
 public class ProductController {
 
   @Autowired
-  private ProductService productService;
+  private final ProductRepository productRepository;
+
+  public ProductController(ProductRepository productRepository) {
+    this.productRepository = productRepository;
+  }
 
   @GetMapping("/products")
   public List<Product> findAll() {
-    return productService.findAll();
+    return productRepository.findAll();
   }
+
+  @GetMapping("products/{id}")
+  public Product getProductById(@PathVariable Long id) {
+    return productRepository.findById(id);
+  }
+
+  // Spring BootがURLパス /shingu-main/products/掛け布団
+  // に対して複数のハンドラメソッドが一致していることによりどのハンドラメソッド呼び出すべきかを判断できない
+  @GetMapping("/products/category/{category}")
+  public List<Product> findByCategory(@PathVariable String category) {
+    return productRepository.findByCategory(category);
+  }
+
   // @GetMapping("/products")
   // public ResponseEntity<List<Product>> findAll(@RequestParam("page") int page,
   // @RequestParam(name = "size", defaultValue = "5") int size) {
