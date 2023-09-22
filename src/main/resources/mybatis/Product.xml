@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shingu.shingubackend.domain.service.ProductRepository">
+
+    <select id="findAll" resultType="com.shingu.shingubackend.domain.model.Product">
+        SELECT * FROM products
+    </select>
+
+    <select id="findDistinctCategories" resultType="java.lang.String">
+        SELECT DISTINCT category FROM products
+    </select>
+
+    <select id="findByCategory" resultType="com.shingu.shingubackend.domain.model.Product">
+        SELECT * FROM products WHERE category = #{category}
+    </select>
+
+    <select id="findById" resultType="com.shingu.shingubackend.domain.model.Product">
+        SELECT * FROM products WHERE id = #{id}
+    </select>
+
+    <insert id="save" parameterType="com.shingu.shingubackend.domain.model.Product">
+        INSERT INTO products (name, description, image, category, price)
+        VALUES (#{name}, #{description}, #{image}, #{category}, #{price})
+    </insert>
+
+</mapper>
