@@ -20,3 +20,9 @@ VALUES
 ('布団カバー　cool', '冷たさ長持ち。抗菌防臭加工・制菌加工付きでいつでも清潔。', '/images/9.jpg', '布団カバー', 7777);
 
 
+CREATE TABLE IF NOT EXISTS users(
+	username NVARCHAR(50),
+	password NVARCHAR(500) NOT NULL,
+	enabled boolean NOT NULL,
+  PRIMARY KEY(username)
+);

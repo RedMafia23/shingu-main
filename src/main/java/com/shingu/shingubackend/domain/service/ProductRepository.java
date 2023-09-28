@@ -4,9 +4,6 @@ import com.shingu.shingubackend.domain.model.Product;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-@CrossOrigin
 public interface ProductRepository {
 
   List<Product> findAll();

@@ -13,7 +13,6 @@ import com.shingu.shingubackend.domain.model.Product;
 import com.shingu.shingubackend.domain.service.ProductRepository;
 
 @RestController
-@CrossOrigin
 public class ProductController {
 
   @Autowired

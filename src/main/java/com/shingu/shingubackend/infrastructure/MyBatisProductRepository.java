@@ -4,11 +4,9 @@ import com.shingu.shingubackend.domain.model.Product;
 import com.shingu.shingubackend.domain.service.ProductRepository;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin
 @Repository
 public class MyBatisProductRepository implements ProductRepository {
 
